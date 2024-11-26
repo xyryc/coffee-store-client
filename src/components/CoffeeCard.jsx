@@ -1,40 +1,74 @@
 import { FaEye } from "react-icons/fa";
 import { MdDelete, MdEdit } from "react-icons/md";
+import Swal from "sweetalert2";
 
 /* eslint-disable react/prop-types */
 const CoffeeCard = ({ coffee }) => {
-  return (
-    <div className="rounded-xl p-8 flex gap-8 justify-center items-center">
-      <img src={coffee.photo} alt={coffee.name} className="h-60" />
+  const { _id, photo, name, price, chef } = coffee;
 
-      <div className="space-y-2 border text-left">
-        <p className="text-xl">
-          <span className="font-semibold text-gray-600">Name:</span>
-          {coffee.name}
+  const handleDelete = (_id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/coffee/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your coffee has been deleted",
+                icon: "success",
+              });
+            }
+          });
+      }
+    });
+  };
+
+  return (
+    <div className="rounded-xl p-8 flex flex-col sm:flex-row gap-8 justify-center items-center">
+      <img src={photo} alt={name} className="h-60 w-48 object-scale-down" />
+
+      <div className="space-y-2 text-left">
+        <p className="text-xl text-gray-600">
+          <span className="font-semibold text-black">Name: </span>
+          {name}
         </p>
-        <p className="text-xl">
-          <span className="font-semibold text-gray-600">Chef:</span>
-          {coffee.chef}
+        <p className="text-xl text-gray-600">
+          <span className="font-semibold text-black">Chef: </span>
+          {chef}
         </p>
-        <p className="text-xl">
-          <span className="font-semibold text-gray-600">Name:</span>
-          {coffee.name}
+        <p className="text-xl text-gray-600">
+          <span className="font-semibold text-black">Price: </span>
+          {price}
         </p>
       </div>
 
-      <div className="space-y-4 ml-5">
-        <div className="p-3 bg-[#D2B48C] rounded-md text-white">
+      <div className="flex gap-4 sm:flex-col ml-5">
+        <div className="btn bg-[#D2B48C] text-white">
           <FaEye />
         </div>
 
-        <div className="p-3 bg-[#3C393B] rounded-md text-white">
+        <div className="btn bg-[#3C393B] text-white">
           <MdEdit />
         </div>
 
-        <div className="p-3 bg-[#EA4744] rounded-md text-white">
+        <div
+          onClick={() => handleDelete(_id)}
+          className="btn bg-[#EA4744] text-white"
+        >
           <MdDelete />
         </div>
-
       </div>
     </div>
   );

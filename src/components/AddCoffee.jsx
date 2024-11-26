@@ -11,8 +11,20 @@ const AddCoffee = () => {
     const taste = form.taste.value;
     const category = form.category.value;
     const details = form.details.value;
+    const quantity = form.quantity.value;
+    const price = form.price.value;
     const photo = form.photo.value;
-    const newCoffee = { name, chef, supplier, taste, category, details, photo };
+    const newCoffee = {
+      name,
+      chef,
+      supplier,
+      taste,
+      category,
+      details,
+      quantity,
+      price,
+      photo,
+    };
     console.log(newCoffee);
 
     // send data to server
@@ -26,13 +38,13 @@ const AddCoffee = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if(data.insertedId){
+        if (data.insertedId) {
           Swal.fire({
-            title: 'Success!',
-            text: 'Coffee Added Successfully',
-            icon: 'success',
-            confirmButtonText: 'OK'
-          })
+            title: "Success!",
+            text: "Coffee Added Successfully",
+            icon: "success",
+            confirmButtonText: "OK",
+          });
         }
       });
   };
@@ -112,6 +124,32 @@ const AddCoffee = () => {
               type="text"
               name="details"
               placeholder="Enter coffee details"
+              className="input input-bordered w-full"
+            />
+          </label>
+        </div>
+
+        <div className="md:flex gap-6">
+          <label className="form-control md:w-1/2">
+            <div className="label">
+              <span className="label-text font-semibold text-xl">Quantity</span>
+            </div>
+            <input
+              type="text"
+              name="quantity"
+              placeholder="Enter quantity"
+              className="input input-bordered w-full"
+            />
+          </label>
+
+          <label className="form-control w-full md:w-1/2">
+            <div className="label">
+              <span className="label-text font-semibold text-xl">Price</span>
+            </div>
+            <input
+              type="text"
+              name="price"
+              placeholder="Enter coffee price"
               className="input input-bordered w-full"
             />
           </label>
