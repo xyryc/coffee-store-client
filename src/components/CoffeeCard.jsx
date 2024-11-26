@@ -1,9 +1,10 @@
 import { FaEye } from "react-icons/fa";
 import { MdDelete, MdEdit } from "react-icons/md";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 /* eslint-disable react/prop-types */
-const CoffeeCard = ({ coffee }) => {
+const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
   const { _id, photo, name, price, chef } = coffee;
 
   const handleDelete = (_id) => {
@@ -29,6 +30,9 @@ const CoffeeCard = ({ coffee }) => {
                 text: "Your coffee has been deleted",
                 icon: "success",
               });
+
+              const remaining = coffees.filter((cof) => cof._id !== _id);
+              setCoffees(remaining);
             }
           });
       }
@@ -59,9 +63,12 @@ const CoffeeCard = ({ coffee }) => {
           <FaEye />
         </div>
 
-        <div className="btn bg-[#3C393B] text-white">
+        <Link
+          to={`/updateCoffee/${_id}`}
+          className="btn bg-[#3C393B] text-white"
+        >
           <MdEdit />
-        </div>
+        </Link>
 
         <div
           onClick={() => handleDelete(_id)}
