@@ -40,25 +40,27 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
   };
 
   return (
-    <div className="rounded-xl p-8 flex flex-col sm:flex-row gap-8 justify-center items-center">
-      <img src={photo} alt={name} className="h-60 w-48 object-scale-down" />
+    <div className="rounded-xl p-8 flex flex-col sm:flex-row gap-8 justify-between items-center mt-12">
+      <div className="flex items-center">
+        <img src={photo} alt={name} className="h-60 w-48 object-scale-down" />
 
-      <div className="space-y-2 text-left">
-        <p className="text-xl text-gray-600">
-          <span className="font-semibold text-black">Name: </span>
-          {name}
-        </p>
-        <p className="text-xl text-gray-600">
-          <span className="font-semibold text-black">Chef: </span>
-          {chef}
-        </p>
-        <p className="text-xl text-gray-600">
-          <span className="font-semibold text-black">Price: </span>
-          {price}
-        </p>
+        <div className="space-y-2 text-left">
+          <p className="xl:text-xl text-gray-600">
+            <span className="font-semibold text-black">Name: </span>
+            {name}
+          </p>
+          <p className="xl:text-xl text-gray-600">
+            <span className="font-semibold text-black">Chef: </span>
+            {chef}
+          </p>
+          <p className="xl:text-xl text-gray-600">
+            <span className="font-semibold text-black">Price: </span>
+            {price}
+          </p>
+        </div>
       </div>
 
-      <div className="flex gap-4 sm:flex-col ml-5">
+      <div className="flex gap-4 sm:flex-col">
         <div className="btn bg-[#D2B48C] text-white">
           <FaEye />
         </div>
