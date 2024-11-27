@@ -29,7 +29,12 @@ function AllCoffees() {
 
       <div className=" container mx-auto px-4 py-28">
         <p className="text-xl mb-2">--- Sip & Savor ---</p>
-        <h1 className="font-rancho text-[55px] text-[#331A15] text-shadow-md">
+        <h1
+          className="font-rancho text-[55px] text-[#331A15]"
+          style={{
+            textShadow: "0 0 1px #331A15, 0 0 2px #331A15, 0 0 15px #331A15",
+          }}
+        >
           Our Popular Products
         </h1>
 
