@@ -12,22 +12,22 @@ function AllCoffees() {
 
   return (
     <>
-      <div>
-        <div className="relative">
-          <img
-            className="absolute -z-10 top-0 left-0"
-            src={CoffeeCup}
-            alt="Coffee Cup background"
-          />
-          <img
-            className={`absolute -z-10  right-0 ${
-              loadedCoffees.length > 4 && "top-80"
-            }`}
-            src={CoffeeShop}
-            alt="Coffee Shop background"
-          />
-        </div>
+      <div className="relative">
+        <img
+          className="absolute -z-10 top-32 left-0"
+          src={CoffeeCup}
+          alt="Coffee Cup background"
+        />
+        <img
+          className={`absolute -z-10  right-0 ${
+            loadedCoffees.length > 4 && "top-80"
+          }`}
+          src={CoffeeShop}
+          alt="Coffee Shop background"
+        />
+      </div>
 
+      <div className=" container mx-auto px-4 py-28">
         <p className="text-xl mb-2">--- Sip & Savor ---</p>
         <h1 className="font-rancho text-[55px] text-[#331A15] text-shadow-md">
           Our Popular Products
