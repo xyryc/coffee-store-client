@@ -6,7 +6,9 @@ const HomeLayout = () => {
   return (
     <div className="font-raleway text-center">
       <Header />
+
       <Outlet />
+
       <Footer />
     </div>
   );

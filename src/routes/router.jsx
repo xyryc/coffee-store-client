@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import AddCoffee from "../components/AddCoffee";
-import UpdateCoffee from "../components/UpdateCoffee";
-import HomeLayout from "../Layouts/HomeLayout";
+import UpdateCoffee from "../pages/UpdateCoffee";
 import AllCoffees from "../pages/AllCoffees";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import Users from "../pages/Users";
+import HomeLayout from "../layouts/HomeLayout";
+import AddCoffee from "../pages/AddCoffee";
 
 const router = createBrowserRouter([
   {
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       {
         path: "/users",
         element: <Users />,
-        loader: () => fetch("http://localhost:5000/users")
+        loader: () => fetch("http://localhost:5000/users"),
       },
     ],
   },

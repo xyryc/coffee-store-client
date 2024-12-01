@@ -5,33 +5,35 @@ import { NavLink } from "react-router-dom";
 const Header = () => {
   return (
     <div
-      className="flex justify-center items-center"
+      className=" "
       style={{
         backgroundImage: `url(${HeaderBackground})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}
     >
-      <NavLink
-        to={`/`}
-        className="flex-1 flex justify-center items-center p-4 gap-2"
-      >
-        <img className="h-[90px] " src={HeaderLogo} alt="" />
-        <h1 className="font-rancho text-4xl md:text-6xl text-white">
-          Espresso Emporium
-        </h1>
-      </NavLink>
+      <div className="container mx-auto flex justify-center items-center">
+        <NavLink
+          to={`/`}
+          className="flex-1 flex justify-center items-center p-4 gap-2"
+        >
+          <img className="h-[90px] " src={HeaderLogo} alt="" />
+          <h1 className="font-rancho text-4xl md:text-6xl text-white">
+            Espresso Emporium
+          </h1>
+        </NavLink>
 
-      <div className="flex flex-col gap-2">
-        <NavLink to={`/signin`} className="btn btn-xs">
-          SignIn
-        </NavLink>
-        <NavLink to={`/signup`} className="btn btn-xs">
-          SignUp
-        </NavLink>
-        <NavLink to={`/users`} className="btn btn-xs">
-          Users
-        </NavLink>
+        <div className="flex flex-col gap-2">
+          <NavLink to={`/signin`} className="btn btn-xs">
+            SignIn
+          </NavLink>
+          <NavLink to={`/signup`} className="btn btn-xs">
+            SignUp
+          </NavLink>
+          <NavLink to={`/users`} className="btn btn-xs">
+            Users
+          </NavLink>
+        </div>
       </div>
     </div>
   );

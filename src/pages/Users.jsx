@@ -41,8 +41,8 @@ const Users = () => {
   };
 
   return (
-    <div className="my-16">
-      <h2 className="font-rancho text-3xl font-bold">
+    <div className="my-16 container mx-auto px-4">
+      <h2 className="font-rancho text-3xl font-bold mb-4">
         Total Users: {users.length}
       </h2>
 
@@ -55,6 +55,7 @@ const Users = () => {
               <th>Name</th>
               <th>Job</th>
               <th>Created At</th>
+              <th>Last Signin At</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -66,6 +67,7 @@ const Users = () => {
                 <th>{user.name}</th>
                 <th>{user.email}</th>
                 <th>{user.createdAt || "Not defined"}</th>
+                <th>{user.lastSignInTime || "Not defined"}</th>
                 <td>
                   <button className="btn">
                     <FiEdit2 />

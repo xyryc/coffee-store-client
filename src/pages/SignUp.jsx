@@ -57,7 +57,7 @@ const SignUp = () => {
                 text: "User created in database successfully!",
                 icon: "success",
               });
-              navigate("/");
+              // navigate("/");
             }
           })
         );
@@ -180,7 +180,7 @@ const SignUp = () => {
         </form>
         <p className="2xl:font-semibold text-center">
           {`Already Have An Account? `}
-          <Link className="text-red-500" to="/login">
+          <Link className="text-red-500" to="/signin">
             Login
           </Link>
         </p>

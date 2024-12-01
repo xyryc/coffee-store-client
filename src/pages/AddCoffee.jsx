@@ -50,8 +50,8 @@ const AddCoffee = () => {
   };
 
   return (
-    <div className="bg-[#F4F3F0] ">
-      <h2 className="text-[#374151] text-[45px] ">Add a coffee</h2>
+    <div className="bg-[#F4F3F0] container mx-auto px-4 my-10">
+      <h2 className="text-[#374151] text-[45px] font-rancho">Add a coffee</h2>
 
       <form onSubmit={handleAddCoffee}>
         <div className="md:flex gap-6">

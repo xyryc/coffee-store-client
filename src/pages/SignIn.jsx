@@ -1,19 +1,45 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
-
-import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { Helmet } from "react-helmet-async";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 
-const Login = () => {
+const SignIn = () => {
+  const { signInUser } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
-    const handleSubmit = () => {
-        
-    }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const form = new FormData(event.target);
+    const email = form.get("email");
+    const password = form.get("password");
+
+    signInUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+
+        // update last login time
+        const lastSignInTime = result?.user?.metadata?.lastSignInTime;
+        const loginInfo = { email, lastSignInTime };
+
+        fetch(`http://localhost:5000/users`, {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(loginInfo),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("signin info updated in db", data);
+          });
+      })
+      .catch((error) => console.log(error.message));
+  };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -95,7 +121,7 @@ const Login = () => {
         </form>
         <p className="2xl:font-semibold text-center">
           {`Don't Have An Account? `}
-          <Link className="text-red-500" to="/register">
+          <Link className="text-red-500" to="/signup">
             Register
           </Link>
         </p>
@@ -104,4 +130,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignIn;

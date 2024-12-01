@@ -27,7 +27,7 @@ function AllCoffees() {
         />
       </div>
 
-      <div className=" container mx-auto px-4 py-28">
+      <div className="container mx-auto px-4 py-28">
         <p className="text-xl mb-2">--- Sip & Savor ---</p>
         <h1
           className="font-rancho text-[55px] text-[#331A15]"
