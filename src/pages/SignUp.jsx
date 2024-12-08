@@ -41,7 +41,7 @@ const SignUp = () => {
         const newUser = { photo, name, email, createdAt };
         toast.success("User registered successfully.");
 
-        fetch("http://localhost:5000/users", {
+        fetch("https://coffee-store-server-psi-ochre.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

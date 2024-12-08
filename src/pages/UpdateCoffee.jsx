@@ -44,7 +44,7 @@ const UpdateCoffee = () => {
     console.log(updatedCoffee);
 
     // send data to server
-    fetch(`http://localhost:5000/coffee/${_id}`, {
+    fetch(`https://coffee-store-server-psi-ochre.vercel.app/coffee/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -66,7 +66,7 @@ const UpdateCoffee = () => {
   };
 
   return (
-    <div className="bg-[#F4F3F0] ">
+    <div className="bg-[#F4F3F0] container mx-auto px-4 my-10">
       <h2 className="text-[#374151] text-[45px] ">Update coffee: {name}</h2>
 
       <form onSubmit={handleUpdateCoffee}>
